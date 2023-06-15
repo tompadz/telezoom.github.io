@@ -23,7 +23,7 @@
         body {
             font-family: 'Roboto', sans-serif;
             color: var(--tg-theme-text-color, #000);
-            background: var(--tg-theme-secondary-bg-color, #05060f0a);
+            background: var(--tg-theme-bg-color, #fff);
             font-size: 18px;
             padding: 16px;
             display: flex;
@@ -32,9 +32,6 @@
 
         .content {
             width: fit-content;
-            background: var(--tg-theme-bg-color, #fff);
-            padding: 24px;
-            border-radius: 20px;
         }
 
         .input_container {
@@ -61,6 +58,7 @@
         .input_field {
             width: auto;
             height: 40px;
+            color: var(--tg-theme-text-color, #000);
             padding: 0 16px 0 16px;
             border-radius: 9px;
             outline: none;
@@ -77,8 +75,8 @@
 
     </style>
 </head>
-<body>
 
+<body>
 <section class="content">
 
     <div class="input_container">
@@ -101,6 +99,13 @@
     </div>
 
 </section>
-
 </body>
+
+<script>
+    let tg = window.Telegram.WebApp; //получаем объект webapp телеграма
+
+    tg.BackButton.show();
+    tg.MainButton.text = "Создать встречу"; //изменяем текст кнопки
+</script>
+
 </html>
