@@ -1,39 +1,106 @@
 <!DOCTYPE HTML>
 <html lang="Ru">
 <head>
-    <meta charset="UTF-8">
-    <title>Getting Started: Serving Web Content</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="MobileOptimized" content="176" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="robots" content="noindex,nofollow" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+    <title></title>
+
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <style>
-        body{
+
+        body {
+            font-family: 'Roboto', sans-serif;
             color: var(--tg-theme-text-color, #000);
-            background: var(--tg-theme-bg-color, #000);
+            background: var(--tg-theme-secondary-bg-color, #05060f0a);
+            font-size: 18px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+        }
+
+        .content {
+            width: fit-content;
+            background: var(--tg-theme-bg-color, #fff);
+            padding: 24px;
+            border-radius: 20px;
+        }
+
+        .input_container {
+            width: 100%;
+            height: fit-content;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            font-size: 18px;
+            margin-bottom: 20px;
+            gap: 5px;
         }
-        .button{
-            display: block;
-            width: 100%;
-            font-size: 14px;
-            margin: 15px 0;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 4px;
-            background-color: var(--tg-theme-button-color, #50a8eb);
-            color: var(--tg-theme-button-text-color, #ffffff);
-            cursor: pointer;
+
+        .input_label {
+            font-size: 12px;
+            color: var(--tg-theme-hint-color, #8B8E98);
+            font-weight: 600;
+        }
+
+        .input_helper {
+            font-size: 10px;
+            margin: 5;
+            color: var(--tg-theme-hint-color, #8B8E98);
+        }
+
+        .input_field {
+            width: auto;
+            height: 40px;
+            padding: 0 16px 0 16px;
+            border-radius: 9px;
+            outline: none;
+            background-color: var(--tg-theme-secondary-bg-color, #05060f0a);
+            border: 1px solid #e5e5e500;
+            transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+        }
+
+        .input_field:focus {
+            border: 1px solid transparent;
+            box-shadow: 0 0 0 2px var(--tg-theme-button-color, #50a8eb);
+            background-color: transparent;
         }
 
     </style>
 </head>
 <body>
-<section id="top_sect">
-    <p>Hello world</p>
-    <button id="btn" class="button" onclick="">Send «Hello, World!»</button>
+
+<section class="content">
+
+    <div class="input_container">
+        <label for="name_field" class="input_label">Название встречи</label>
+        <input id="name_field" class="input_field" type="text" name="input-name" title="Inpit title" placeholder="zoom meeting">
+    </div>
+
+    <div class="input_container">
+        <label for="date_field" class="input_label">Дата и время встречи</label>
+        <div class="split">
+            <input id="date_field" class="input_field" type="date" name="input-name" title="Expiry Date" placeholder="01/23">
+            <input id="time_field" class="input_field" type="time" name="time">
+        </div>
+    </div>
+
+    <div class="input_container">
+        <label for="users_field" class="input_label">Приглашенные пользователи</label>
+        <input id="users_field" class="input_field" type="text" name="input-name" title="Inpit title" placeholder="@dapadz @durov">
+        <p class="input_helper">Если поле пустое, доступ будет открыт всем у кого есть ссылка</p>
+    </div>
+
 </section>
+
 </body>
 </html>
