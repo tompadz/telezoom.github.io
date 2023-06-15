@@ -18,6 +18,11 @@
 
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
+    <script>
+        let tg = window.Telegram.WebApp;
+        tg.MainButton.text = "Создать встречу";
+    </script>
+
     <style>
 
         body {
@@ -51,7 +56,7 @@
 
         .input_helper {
             font-size: 10px;
-            margin: 5;
+            margin: 5px;
             color: var(--tg-theme-hint-color, #8B8E98);
         }
 
@@ -67,10 +72,15 @@
             transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
         }
 
+        .split {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
         .input_field:focus {
             border: 1px solid transparent;
             box-shadow: 0 0 0 2px var(--tg-theme-button-color, #50a8eb);
-            background-color: transparent;
         }
 
     </style>
@@ -87,7 +97,7 @@
     <div class="input_container">
         <label for="date_field" class="input_label">Дата и время встречи</label>
         <div class="split">
-            <input id="date_field" class="input_field" type="date" name="input-name" title="Expiry Date" placeholder="01/23">
+            <input id="date_field" class="input_field" type="date" name="input-name">
             <input id="time_field" class="input_field" type="time" name="time">
         </div>
     </div>
@@ -100,12 +110,4 @@
 
 </section>
 </body>
-
-<script>
-    let tg = window.Telegram.WebApp; //получаем объект webapp телеграма
-
-    tg.BackButton.show();
-    tg.MainButton.text = "Создать встречу"; //изменяем текст кнопки
-</script>
-
 </html>
