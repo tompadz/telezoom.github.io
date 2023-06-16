@@ -121,7 +121,7 @@
     </div>
 
 
-    <p class="version">version: 1.4</p>
+    <p class="version">version: 1.5</p>
 
 </section>
 
@@ -132,12 +132,13 @@
     tg.MainButton.text = "Создать встречу";
     tg.MainButton.isVisible = true;
     tg.MainButton.show();
-    tg.ready();
 
     Telegram.WebApp.onEvent('mainButtonClicked', function(){
         tg.sendData("some string that we need to send");
         tg.close();
     });
+
+    tg.ready();
 
 </script>
 
