@@ -133,8 +133,13 @@
     tg.MainButton.isVisible = true;
     tg.MainButton.show();
 
+    let name = "test"
+    let users = "@dapadz @durov"
+    let date = 111111
+    let time = 111111
+
     Telegram.WebApp.onEvent('mainButtonClicked', function(){
-        tg.sendData("some string that we need to send");
+        tg.sendData("{\"name\":\"${name}\", \"users\":\"${users}\" }");
         tg.close();
     });
 
