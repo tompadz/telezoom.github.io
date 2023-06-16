@@ -24,6 +24,19 @@
             padding: 16px;
         }
 
+        @media (max-width: 768px) {
+            input[type="date"]::-webkit-inner-spin-button,
+            input[type="date"]::-webkit-calendar-picker-indicator {
+                display: none;
+                -webkit-appearance: none;
+            }
+
+            input[type="time"]::-webkit-inner-spin-button,
+            input[type="time"]::-webkit-calendar-picker-indicator {
+                margin-right: 50px;
+            }
+        }
+
         .input_container {
             width: 100%;
             height: fit-content;
@@ -103,12 +116,18 @@
 </section>
 
 <script>
+
     let tg = window.Telegram.WebApp;
+
     tg.MainButton.text = "Создать встречу";
     tg.MainButton.isVisible = true;
     tg.MainButton.show();
-    tg.sendData("hello world")
     tg.ready();
+
+    Telegram.WebApp.onEvent('mainButtonClicked', function(){
+        tg.sendData("some string that we need to send");
+    });
+
 </script>
 
 </body>
