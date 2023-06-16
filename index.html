@@ -121,7 +121,7 @@
     </div>
 
 
-    <p class="version">version: 1.5</p>
+    <p class="version">version: 1.6</p>
 
 </section>
 
@@ -137,9 +137,10 @@
     let users = "@dapadz @durov"
     let date = 111111
     let time = 111111
+    let data = "{\"type\":\"create\",\"data\":{\"name\":\"${name}\",\"date\":${date},\"time\":${time},\"users\":\"${users}\"}}"
 
     Telegram.WebApp.onEvent('mainButtonClicked', function(){
-        tg.sendData("{\"name\":\"${name}\", \"users\":\"${users}\" }");
+        tg.sendData(data);
         tg.close();
     });
 
