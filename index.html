@@ -24,20 +24,6 @@
             padding: 16px;
         }
 
-        @media (max-width: 768px) {
-            input[type="date"]::-webkit-inner-spin-button,
-            input[type="date"]::-webkit-calendar-picker-indicator {
-                display: none;
-                -webkit-appearance: none;
-            }
-
-            input[type="time"]::-webkit-inner-spin-button,
-            input[type="time"]::-webkit-calendar-picker-indicator {
-                display: none;
-                -webkit-appearance: none;
-            }
-        }
-
         .input_container {
             width: 100%;
             height: fit-content;
@@ -121,7 +107,7 @@
     </div>
 
 
-    <p class="version">version: 1.8</p>
+    <p class="version">version: 1.9</p>
 
 </section>
 
@@ -153,7 +139,7 @@
         let usersArray = users ? users.split(/\s+/).map(user => user.replace(/^@/, '')) : null;
 
         let data = JSON.stringify({
-            type: "create",
+            type: "/create",
             data: {
                 name: name,
                 startDate: dateTime,
