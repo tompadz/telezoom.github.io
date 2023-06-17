@@ -121,7 +121,7 @@
     </div>
 
 
-    <p class="version">version: 1.6</p>
+    <p class="version">version: 1.7</p>
 
 </section>
 
@@ -133,11 +133,15 @@
     tg.MainButton.isVisible = true;
     tg.MainButton.show();
 
-    let name = "test"
-    let users = "@dapadz @durov"
-    let date = 111111
-    let time = 111111
-    let data = "{\"type\":\"create\",\"data\":{\"name\":\"${name}\",\"date\":${date},\"time\":${time},\"users\":\"${users}\"}}"
+    let name = document.getElementById("name_field").value;
+    let users = document.getElementById("users_field").value;
+    let date = document.getElementById("date_field").value;
+    let time = document.getElementById("time_field").value;
+
+    let dateTime = `${date}T${time}:00Z`;
+    let usersArray = users.split(/\s+/).map(user => user.replace(/^@/, ''));
+
+    let data = `{"type":"create","data":{"name":"${name}","startDate":"${dateTime}","users":${JSON.stringify(usersArray)}}}`;
 
     Telegram.WebApp.onEvent('mainButtonClicked', function(){
         tg.sendData(data);
