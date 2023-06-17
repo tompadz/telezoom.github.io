@@ -121,7 +121,7 @@
     </div>
 
 
-    <p class="version">version: 1.7</p>
+    <p class="version">version: 1.8</p>
 
 </section>
 
@@ -133,17 +133,34 @@
     tg.MainButton.isVisible = true;
     tg.MainButton.show();
 
-    let name = document.getElementById("name_field").value;
-    let users = document.getElementById("users_field").value;
-    let date = document.getElementById("date_field").value;
-    let time = document.getElementById("time_field").value;
+    let currentDate = new Date();
+    let currentDateString = currentDate.toISOString().slice(0, 10);
+    let currentTimeString = currentDate.toTimeString().slice(0, 5);
 
-    let dateTime = `${date}T${time}:00Z`;
-    let usersArray = users.split(/\s+/).map(user => user.replace(/^@/, ''));
-
-    let data = `{"type":"create","data":{"name":"${name}","startDate":"${dateTime}","users":${JSON.stringify(usersArray)}}}`;
+    document.getElementById("date_field").value = currentDateString;
+    document.getElementById("time_field").value = currentTimeString;
 
     Telegram.WebApp.onEvent('mainButtonClicked', function(){
+
+        let name = document.getElementById("name_field").value || null;
+        let users = document.getElementById("users_field").value || null;
+        let date = document.getElementById("date_field").value;
+        let time = document.getElementById("time_field").value;
+
+        let currentDateTime = currentDate.toISOString().slice(0, 19) + 'Z';
+
+        let dateTime = date && time ? `${date}T${time}:00Z` : currentDateTime;
+        let usersArray = users ? users.split(/\s+/).map(user => user.replace(/^@/, '')) : null;
+
+        let data = JSON.stringify({
+            type: "create",
+            data: {
+                name: name,
+                startDate: dateTime,
+                users: usersArray
+            }
+        });
+
         tg.sendData(data);
         tg.close();
     });
